@@ -1,0 +1,20 @@
+.header {
+  background: var(--main-gray);
+
+  &__container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  &__logo {
+    height: 58px;
+    width: 60px;
+
+    img {
+      @include image-cover;
+      display: block;
+    }
+  }
+}

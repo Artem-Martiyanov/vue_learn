@@ -1,0 +1,18 @@
+.nav {
+  padding: 30px;
+  text-align: center;
+
+  a {
+    font-weight: bold;
+    color: var(--font-dark);
+
+    &.router-link-exact-active {
+      color: var(--font-green);
+    }
+
+    &:not(:last-of-type)::after {
+      content: ' | ';
+      color: var(--font-dark);
+    }
+  }
+}
