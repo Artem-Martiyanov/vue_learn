@@ -52,3 +52,25 @@
     transition-property: $properties;
   }
 }
+
+@mixin cross ($size, $thickness) {
+  position: relative;
+
+  &::before, &::after {
+    content: '';
+    position: absolute;
+    height: $thickness;
+    width: $size;
+    left: 50%;
+    top: 50%;
+    background-color: currentColor;
+  }
+
+  &::before {
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+
+  &::after {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+}

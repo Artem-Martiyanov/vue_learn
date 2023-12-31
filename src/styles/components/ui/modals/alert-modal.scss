@@ -1,0 +1,23 @@
+.alert-modal {
+  &__title {
+    color: red;
+  }
+
+  :deep(.regular-modal__inner) {
+    @include ease(transform);
+  }
+
+  &.v-enter-from,
+  &.v-leave-to {
+    :deep(.regular-modal__inner) {
+      transform: translateY(-100vh);
+    }
+  }
+
+  &.v-enter-to,
+  &.v-leave-from {
+    :deep(.regular-modal__inner) {
+      transform: translateY(0);
+    }
+  }
+}

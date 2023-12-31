@@ -1,6 +1,8 @@
 :root {
   // Base colors
   --main-gray: #c1c8d0;
+  --main-light-gray: #e2e5ea;
+  --main-white: #ffffff;
 
   // Font colors
   --font-dark: #2c3e50;
@@ -8,6 +10,12 @@
 
   // Other
   --hover-transition: 0.15s;
+
+  // Layers
+  --z-base: 1;
+  --z-modals: 10;
+  --z-overlays: 100;
+  --z-extra: 999999;
 }
 
 // Viewports

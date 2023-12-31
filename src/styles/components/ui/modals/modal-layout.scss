@@ -1,0 +1,40 @@
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-modals);
+
+  &__layout {
+    position: absolute;
+    inset: 0;
+  }
+
+  &__content {
+    z-index: var(--z-base);
+  }
+}
+
+
+// Анимация для бокового модального окна
+.side-modal-enter-from,
+.side-modal-leave-to {
+  @include ease(all);
+
+  :deep(.side-modal__inner) {
+    transform: translateX(-100%);
+  }
+
+  :deep(.side-modal__layout) {
+    opacity: 0;
+  }
+}
+
+// Анимация для стандартного модального окна
+.regular-modal-enter-from,
+.regular-modal-leave-to {
+  @include ease(all);
+
+  :deep(.regular-modal__layout),
+  :deep(.regular-modal__inner) {
+    opacity: 0;
+  }
+}
