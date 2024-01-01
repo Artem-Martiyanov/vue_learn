@@ -8,14 +8,16 @@
   --font-dark: #2c3e50;
   --font-green: #42b983;
 
-  // Other
-  --hover-transition: 0.15s;
-
   // Layers
+  --z-back: -1;
   --z-base: 1;
   --z-modals: 10;
   --z-overlays: 100;
   --z-extra: 999999;
+
+  // Other
+  --hover-transition: 0.15s;
+  --active-opacity: 0.4;
 }
 
 // Viewports

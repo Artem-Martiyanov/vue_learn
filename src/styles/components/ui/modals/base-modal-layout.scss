@@ -1,0 +1,39 @@
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-modals);
+  pointer-events: none;
+
+  :deep(*) {
+    pointer-events: all;
+  }
+}
+
+
+// Анимация для левого бокового модального окна
+.left-side-modal-enter-from,
+.left-side-modal-leave-to {
+  @include ease(all);
+
+  :deep(.side-modal__inner) {
+    transform: translateX(-100%);
+  }
+
+  :deep(.side-modal__layout) {
+    opacity: 0;
+  }
+}
+
+// Анимация для правого бокового модального окна
+.right-side-modal-enter-from,
+.right-side-modal-leave-to {
+  @include ease(all);
+
+  :deep(.side-modal__inner) {
+    transform: translateX(100%);
+  }
+
+  :deep(.side-modal__layout) {
+    opacity: 0;
+  }
+}

@@ -1,52 +1,37 @@
 <script setup lang="ts">
 import {ref} from "vue";
-import ConfirmModal from "@/components/ui/modals/ConfirmModal.vue";
 import Container from "@/layouts/Container.vue";
-import SideModal from "@/components/ui/modals/base/SideModal.vue";
+import SideModalTemplate from "@/components/ui/modals/templates/SideModalTemplate.vue";
+import LeftMenuModal from "@/components/ui/modals/LeftMenuModal.vue";
 
-const isModalVisible = ref(false)
-const isSideModalVisible = ref(false)
-const isTextRed = ref(false)
+const isLeftMenuVisible = ref(false)
+const isRightSideModalVisible = ref(false)
 
-const openModal = () => isModalVisible.value = true
-const openSideModal = () => isSideModalVisible.value = true
-const toggleTextColor = () => isTextRed.value = !isTextRed.value
+
+const openLeftMenu = () => isLeftMenuVisible.value = true
+const openRightSideModal = () => isRightSideModalVisible.value = true
 
 
 </script>
 
 <template>
   <Container>
-    <div class="text" :class="{'text--red': isTextRed}">
-      Lorem ipsum dolor sit amet, consectetur
-      <br>
-      adipisicing elit. Adipisci, ea, obcaecati! Omnis, provident suscipit.
-    </div>
+
+    <button @click="openLeftMenu">Открыть левое меню</button>
+
+    <button @click="openRightSideModal">Открыть правое меню</button>
 
 
-    <button @click="openModal">Сменить цвет текста</button>
-    <button @click="openSideModal">Открыть меню</button>
-
-    <div style="height: 150vh"></div>
-
-    <ConfirmModal
-        v-model:is-open="isModalVisible"
-        title="Это модальное окно подтверждения"
-        text="Это текст модального окна"
-        button-text="Подтвердить"
-        @on-confirm="toggleTextColor"
+    <LeftMenuModal
+        v-model:is-open="isLeftMenuVisible"
     />
 
+    <SideModalTemplate
+        side="right"
+        v-model:is-open="isRightSideModalVisible"
+    />
 
-
-      <SideModal
-      v-model:is-open="isSideModalVisible"
-      />
-
-
-
-
-
+    <div style="height: 150vh"/>
   </Container>
 </template>
 

@@ -3,21 +3,15 @@ import {Module, StoreOptions} from "vuex";
 
 export interface ModalLayerState {
     layer: number,
-    closeAllFlag: boolean
 }
 
 export default <StoreOptions<ModalLayerState>> {
     state: (): ModalLayerState => ({
-        layer: 1,
-        closeAllFlag: false
+        layer: 0,
     }),
-    mutations: {
-        up: (state) => state.layer++,
-        down: (state) => state.layer--,
-    },
+    mutations: {},
     actions: {
-        modalLayerUp: ({commit}) => commit('up'),
-        modalLayerDown: ({commit}) => commit('down'),
-
+        modalLayerUp: ({commit, state}) => state.layer++,
+        modalLayerDown: ({commit, state}) => state.layer--,
     },
 } as Module<ModalLayerState, any>

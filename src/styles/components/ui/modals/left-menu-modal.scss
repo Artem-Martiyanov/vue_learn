@@ -1,0 +1,33 @@
+.left-menu-modal {
+
+  &__title {
+    font-size: 26px;
+    margin: 0;
+  }
+
+  &__list {
+    @include list-reset;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__link {
+    @include link-reset;
+    @include ease(background);
+    display: block;
+    padding: 10px;
+    background: var(--font-dark);
+    color: var(--main-white);
+    border-radius: 5px;
+
+    &:hover, &:focus-visible {
+      background: var(--font-green);
+    }
+
+    &:active {
+      opacity: var(--active-opacity);
+    }
+
+  }
+}
