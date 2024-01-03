@@ -3,5 +3,5 @@ import GlobalRightSideModal from "@/components/ui/modals/GlobalRightSideModal.vu
 </script>
 
 <template>
-  <GlobalRightSideModal/>
+  <GlobalRightSideModal connect-id="sides-id"/>
 </template>

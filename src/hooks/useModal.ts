@@ -9,8 +9,8 @@ interface IUseModal {
     close: handleFn
 }
 
-export default (initState: boolean): IUseModal => {
-    const isVisible = ref(initState)
+export default (): IUseModal => {
+    const isVisible = ref(false)
 
     return {
         isVisible,

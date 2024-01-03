@@ -77,11 +77,12 @@
 
 @mixin hover {
   @media (hover: hover) {
-    &:hover, &:focus-visible {
+    &:not(.button--disabled):not(.button:disabled):hover,
+    &:not(.button--disabled):not(.button:disabled):focus-visible {
       @content;
     }
 
-    &:active {
+    &:not(.button--disabled):not(.button:disabled):active {
       opacity: var(--active-opacity);
     }
   }

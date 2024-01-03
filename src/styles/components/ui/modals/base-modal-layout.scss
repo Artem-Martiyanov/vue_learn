@@ -19,7 +19,7 @@
     transform: translateX(-100%);
   }
 
-  :deep(.side-modal__layout) {
+  :deep(.side-modal__overlay) {
     opacity: 0;
   }
 }
@@ -33,7 +33,22 @@
     transform: translateX(100%);
   }
 
-  :deep(.side-modal__layout) {
+  :deep(.side-modal__overlay) {
+    opacity: 0;
+  }
+}
+
+// Анимация для простого модального окна
+.simple-modal-enter-from,
+.simple-modal-leave-to {
+  transition: all 0.5s ease;
+
+  :deep(.simple-modal__inner) {
+    opacity: 0;
+  }
+
+  :deep(.simple-modal__overlay) {
+    transform: scaleY(0);
     opacity: 0;
   }
 }

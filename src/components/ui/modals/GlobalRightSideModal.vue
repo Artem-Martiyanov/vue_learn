@@ -3,6 +3,12 @@ import SideModalTemplate from "@/components/ui/modals/templates/SideModalTemplat
 import useGlobalModalConfigure from "@/hooks/useGlobalModalConfigure";
 import Button from "@/components/ui/Button.vue";
 
+interface Props {
+ connectId?: string
+}
+
+defineProps<Props>()
+
 const isOpen = useGlobalModalConfigure('rightMenu')
 
 const closeThisModal = () => isOpen.value = false
@@ -13,6 +19,7 @@ const closeThisModal = () => isOpen.value = false
   <SideModalTemplate
       class="right-side-menu"
       side="right"
+      :connect-id="connectId"
       v-model:is-open="isOpen"
   >
     <template #header>
@@ -26,7 +33,7 @@ const closeThisModal = () => isOpen.value = false
     </template>
 
     <template #footer>
-      <Button @click="closeThisModal">Закрыть меня</Button>
+      <Button @click="closeThisModal" disabled secondary>Закрыть меня</Button>
     </template>
   </SideModalTemplate>
 </template>

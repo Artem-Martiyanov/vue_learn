@@ -1,0 +1,28 @@
+.simple-modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__overlay {
+    background: rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  &__close {
+    position: absolute;
+    top: -30px;
+    right: -30px;
+  }
+
+  &__inner {
+    @include ease(opacity);
+    transition: opacity 0.3s ease 0.2s;
+    position: relative;
+    background: var(--main-white);
+    padding: 15px;
+    width: 420px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+  }
+}

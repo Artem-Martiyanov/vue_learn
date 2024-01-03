@@ -28,7 +28,7 @@
     height: 2px;
     width: 24px;
     margin: 10px 0;
-    background: var(--main-white);
+    background: currentColor;
     border-radius: 5px;
 
     &::before, &::after {

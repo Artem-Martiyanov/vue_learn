@@ -12,17 +12,15 @@
     margin-bottom: 20px;
   }
 
+  &__link-button {
+    padding: 0;
+    width: 100%;
+  }
+
   &__link {
     @include link-reset;
-    @include ease(background);
     display: block;
+    width: 100%;
     padding: 10px;
-    background: var(--font-dark);
-    color: var(--main-white);
-    border-radius: 5px;
-
-    @include hover {
-      background: var(--font-green);
-    }
   }
 }

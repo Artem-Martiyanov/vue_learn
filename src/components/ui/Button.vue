@@ -3,12 +3,20 @@ import Icon from "@/components/ui/Icon.vue";
 
 interface Props {
   rounded?: boolean,
+  disabled?: boolean,
+  primary?: boolean,
+  secondary?: boolean,
   leftIcon?: {
     width: string,
     height: string,
     name: string,
   },
   rightIcon?: {
+    width: string,
+    height: string,
+    name: string,
+  },
+  centerIcon?: {
     width: string,
     height: string,
     name: string,
@@ -26,7 +34,10 @@ const variables = {
 }
 
 const classes = {
-  'button--rounded': props.rounded
+  'button--primary': props.primary,
+  'button--secondary': props.secondary,
+  'button--rounded': props.rounded,
+  'button--disabled': props.disabled,
 }
 
 </script>
@@ -36,6 +47,7 @@ const classes = {
       class="button"
       :style="variables"
       :class="classes"
+      :disabled="props.disabled"
   >
     <Icon
         class="button__icon button__icon--left"
@@ -45,6 +57,13 @@ const classes = {
         v-if="leftIcon"
     />
     <slot name="icon-left" v-else/>
+    <Icon
+        class="button__icon"
+        :name="centerIcon.name"
+        :height="centerIcon.height"
+        :width="centerIcon.width"
+        v-if="centerIcon"
+    />
     <slot/>
     <Icon
         class="button__icon button__icon--right"

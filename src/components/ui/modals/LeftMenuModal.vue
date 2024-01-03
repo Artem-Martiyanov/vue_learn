@@ -3,31 +3,17 @@ import SideModalTemplate from "@/components/ui/modals/templates/SideModalTemplat
 import {defineModel} from "vue";
 import Button from "@/components/ui/Button.vue";
 import useGlobalModal from "@/hooks/useGlobalModal";
+import {routes} from "@/router";
+
+interface Props {
+  connectId?: string
+}
+
+defineProps<Props>()
 
 const isOpen = defineModel('isOpen')
 
 const rightMenu = useGlobalModal('rightMenu')
-
-const links = [
-  {
-    name: 'Home',
-    href: '/'
-  },
-  {
-    name: 'About',
-    href: '/about'
-  },
-  {
-    name: 'Ссылка 3',
-    href: '#'
-  },
-  {
-    name: 'Ссылка 4',
-    href: '#'
-  },
-]
-
-
 
 </script>
 
@@ -35,6 +21,7 @@ const links = [
   <SideModalTemplate
       class="left-menu-modal"
       side="left"
+      :connect-id="connectId"
       v-model:is-open="isOpen"
   >
     <template #header>
@@ -43,11 +30,13 @@ const links = [
 
     <template #content>
       <ul class="left-menu-modal__list">
-        <li class="left-menu-modal__item" v-for="link in links" :key="link.name">
-          <router-link :to="link.href" class="left-menu-modal__link">{{link.name}}</router-link>
+        <li class="left-menu-modal__item" v-for="route in routes" :key="route.name">
+          <Button class="left-menu-modal__link-button" primary>
+            <router-link class="left-menu-modal__link" :to="route.path">{{ route.name }}</router-link>
+          </Button>
         </li>
       </ul>
-      <Button @click="rightMenu.open">Открыть правое меню</Button>
+      <Button @click="rightMenu.open" secondary>Открыть правое меню</Button>
     </template>
 
   </SideModalTemplate>

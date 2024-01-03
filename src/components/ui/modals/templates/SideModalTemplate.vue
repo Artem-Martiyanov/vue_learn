@@ -8,7 +8,8 @@ import Icon from "@/components/ui/Icon.vue";
 
 
 interface Props {
-  side: 'left' | 'right'
+  side: 'left' | 'right',
+  connectId?: string
 }
 
 withDefaults(defineProps<Props>(), {
@@ -28,14 +29,19 @@ const closeThisModal = () => isOpen.value = false
 <template>
   <BaseModalLayout
       :class="`side-modal side-modal--${side}`"
+      :connect-id="connectId"
       v-model:is-open="isOpen"
       :animation-name="sides[side]"
   >
     <BaseModalOverlay class="side-modal__overlay" @click="closeThisModal"/>
     <div class="side-modal__inner">
-      <Button class='side-modal__close' hidden-text="Закрыть." @click="closeThisModal" rounded>
-        <Icon name="cross" :width="16" :height="16"/>
-      </Button>
+      <Button
+          class='side-modal__close'
+          :center-icon="{name: 'cross', width: 16, height: 16}"
+          hidden-text="Закрыть."
+          @click="closeThisModal"
+          rounded
+      />
       <header class="side-modal__header">
         <slot name="header"/>
       </header>

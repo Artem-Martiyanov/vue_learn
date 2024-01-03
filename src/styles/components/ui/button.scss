@@ -1,18 +1,34 @@
 .button {
   @include button-reset;
-  @include ease(background);
+  @include link-reset;
+  @include ease(background, color);
   display: inline-flex;
   padding: 5px 10px;
-  background: var(--font-dark);
-  border-radius: 4px;
-  color: var(--main-white);
   align-items: center;
   justify-content: center;
   width: var(--width);
   height: var(--height);
+  border-radius: 4px;
 
-  @include hover {
-    background-color: var(--font-green);
+  &--primary {
+    background: var(--font-dark);
+    color: var(--main-white);
+
+    @include hover {
+      background-color: var(--font-green);
+    }
+  }
+
+  &--secondary {
+    background: var(--main-light-gray);
+    color: var(--font-dark);
+    border: 1px solid var(--font-dark);
+
+    @include hover {
+      background-color: var(--font-green);
+      color: var(--main-light-gray);
+      border-color: var(--main-light-gray);
+    }
   }
 
   &--rounded {
@@ -27,5 +43,13 @@
     &--right {
       margin-left: 5px;
     }
+  }
+
+  &--disabled,
+  &:disabled {
+    color: var(--main-white);
+    border-color: transparent;
+    opacity: var(--disable-opacity);
+    cursor: auto;
   }
 }
