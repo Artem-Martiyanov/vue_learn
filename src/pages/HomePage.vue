@@ -1,36 +1,19 @@
 <script setup lang="ts">
-import {ref} from "vue";
 import Container from "@/layouts/Container.vue";
-import SideModalTemplate from "@/components/ui/modals/templates/SideModalTemplate.vue";
-import LeftMenuModal from "@/components/ui/modals/LeftMenuModal.vue";
+import Button from "@/components/ui/Button.vue";
+import useGlobalModal from "@/hooks/useGlobalModal";
 
-const isLeftMenuVisible = ref(false)
-const isRightSideModalVisible = ref(false)
-
-
-const openLeftMenu = () => isLeftMenuVisible.value = true
-const openRightSideModal = () => isRightSideModalVisible.value = true
-
+const rightMenu = useGlobalModal('rightMenu')
 
 </script>
 
 <template>
   <Container>
-
-    <button @click="openLeftMenu">Открыть левое меню</button>
-
-    <button @click="openRightSideModal">Открыть правое меню</button>
-
-
-    <LeftMenuModal
-        v-model:is-open="isLeftMenuVisible"
-    />
-
-    <SideModalTemplate
-        side="right"
-        v-model:is-open="isRightSideModalVisible"
-    />
-
+    <ul>
+      <li>
+        <Button @click="rightMenu.open">Открыть правое меню</Button>
+      </li>
+    </ul>
     <div style="height: 150vh"/>
   </Container>
 </template>

@@ -1,17 +1,34 @@
 <script setup lang="ts">
-import Navigation from "@/components/blocks/Navigation.vue";
 import Container from "@/layouts/Container.vue";
+import Button from "@/components/ui/Button.vue";
+import {watch} from "vue";
+import LeftMenuModal from "@/components/ui/modals/LeftMenuModal.vue";
+import {useRoute} from "vue-router";
+import useModal from "@/hooks/useModal";
+
+
+const route = useRoute()
+const leftMenu = useModal(false)
+
+watch(() => route.path, leftMenu.close)
+
 </script>
 
 <template>
   <header class="header">
     <Container class="header__container">
       <div class="header__logo">
-        <img src="@/assets/logo.png" width="200" height="200" alt="Логотип Vue.">
+        <img src="../../assets/images/logo.png" width="200" height="200" alt="Логотип Vue.">
       </div>
-      <Navigation/>
+      <Button class="header__menu" @click="leftMenu.open">
+        <span class="header__menu-icon"/>
+      </Button>
     </Container>
   </header>
+
+  <LeftMenuModal
+      v-model:is-open="leftMenu.isVisible.value"
+  />
 </template>
 
 <style lang="scss" scoped>

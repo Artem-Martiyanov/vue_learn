@@ -1,0 +1,13 @@
+.right-side-menu {
+
+  &__title {
+    margin: 0;
+  }
+
+  &__logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+}

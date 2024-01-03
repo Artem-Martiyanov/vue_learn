@@ -1,5 +1,4 @@
 .side-modal {
-  backdrop-filter: blur(10px);
   display: flex;
 
   &__overlay {
@@ -25,24 +24,16 @@
   }
 
   &__close {
-    @include button-reset;
-    @include cross(15px, 2px);
-    @include ease(color);
     position: absolute;
     width: 40px;
     height: 40px;
     right: -50px;
     top: 10px;
-    border-radius: 50%;
-    background-color: var(--main-light-gray);
-
-    &:hover, &:focus-visible {
-      color: var(--main-gray);
-    }
   }
 
   &__content {
     margin-bottom: 20px;
+    height: 100%;
   }
 
   &__footer {

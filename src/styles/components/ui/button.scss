@@ -1,0 +1,31 @@
+.button {
+  @include button-reset;
+  @include ease(background);
+  display: inline-flex;
+  padding: 5px 10px;
+  background: var(--font-dark);
+  border-radius: 4px;
+  color: var(--main-white);
+  align-items: center;
+  justify-content: center;
+  width: var(--width);
+  height: var(--height);
+
+  @include hover {
+    background-color: var(--font-green);
+  }
+
+  &--rounded {
+    border-radius: 50%;
+  }
+
+  &__icon {
+    &--left {
+      margin-right: 5px;
+    }
+
+    &--right {
+      margin-left: 5px;
+    }
+  }
+}

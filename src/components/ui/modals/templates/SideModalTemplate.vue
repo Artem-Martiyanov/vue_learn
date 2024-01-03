@@ -3,6 +3,8 @@ import {defineModel} from "vue";
 
 import BaseModalLayout from "@/components/ui/modals/base/BaseModalLayout.vue";
 import BaseModalOverlay from "@/components/ui/modals/base/BaseModalOverlay.vue";
+import Button from "@/components/ui/Button.vue";
+import Icon from "@/components/ui/Icon.vue";
 
 
 interface Props {
@@ -31,9 +33,9 @@ const closeThisModal = () => isOpen.value = false
   >
     <BaseModalOverlay class="side-modal__overlay" @click="closeThisModal"/>
     <div class="side-modal__inner">
-      <button class='side-modal__close' @click="closeThisModal">
-        <span class="visually-hidden">Закрыть окно.</span>
-      </button>
+      <Button class='side-modal__close' hidden-text="Закрыть." @click="closeThisModal" rounded>
+        <Icon name="cross" :width="16" :height="16"/>
+      </Button>
       <header class="side-modal__header">
         <slot name="header"/>
       </header>

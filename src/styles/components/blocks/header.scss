@@ -17,4 +17,36 @@
       display: block;
     }
   }
+
+  &__menu {
+    margin-left: auto;
+  }
+
+  &__menu-icon {
+    position: relative;
+    display: block;
+    height: 2px;
+    width: 24px;
+    margin: 10px 0;
+    background: var(--main-white);
+    border-radius: 5px;
+
+    &::before, &::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      left: 0;
+      height: inherit;
+      background: inherit;
+      border-radius: inherit;
+    }
+
+    &::before {
+      top: -7px;
+    }
+
+    &::after {
+      bottom: -7px;
+    }
+  }
 }

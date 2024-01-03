@@ -1,19 +1,21 @@
 <script setup lang="ts">
 import SideModalTemplate from "@/components/ui/modals/templates/SideModalTemplate.vue";
 import {defineModel} from "vue";
+import Button from "@/components/ui/Button.vue";
+import useGlobalModal from "@/hooks/useGlobalModal";
 
-interface Props {
+const isOpen = defineModel('isOpen')
 
-}
+const rightMenu = useGlobalModal('rightMenu')
 
 const links = [
   {
-    name: 'Ссылка 1',
-    href: '#'
+    name: 'Home',
+    href: '/'
   },
   {
-    name: 'Ссылка 2',
-    href: '#'
+    name: 'About',
+    href: '/about'
   },
   {
     name: 'Ссылка 3',
@@ -23,26 +25,9 @@ const links = [
     name: 'Ссылка 4',
     href: '#'
   },
-  {
-    name: 'Ссылка 5',
-    href: '#'
-  },
-  {
-    name: 'Ссылка 6',
-    href: '#'
-  },
-  {
-    name: 'Ссылка 7',
-    href: '#'
-  },
-
 ]
 
-defineProps<Props>()
 
-const isOpen = defineModel('isOpen')
-
-// const closeThisModal = () => isOpen.value = false
 
 </script>
 
@@ -59,9 +44,10 @@ const isOpen = defineModel('isOpen')
     <template #content>
       <ul class="left-menu-modal__list">
         <li class="left-menu-modal__item" v-for="link in links" :key="link.name">
-          <a :href="link.href" class="left-menu-modal__link">{{link.name}}</a>
+          <router-link :to="link.href" class="left-menu-modal__link">{{link.name}}</router-link>
         </li>
       </ul>
+      <Button @click="rightMenu.open">Открыть правое меню</Button>
     </template>
 
   </SideModalTemplate>
