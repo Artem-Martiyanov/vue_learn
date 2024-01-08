@@ -176,7 +176,7 @@ https://artem-martiyanov.github.io/vue_learn/
 ```vue
 /*GlobalModal.vue*/
 <script setup>
-  import useRegisterGlobalModal from "@/hooks/useGlobalModalConfigure";
+  import useRegisterGlobalModal from "@/hooks/useRegisterGlobalModal";
   import useGlobalModal from "./useGlobalModal";
 
   // Регистрируем глобальное модальное окно под именем globalModalName
