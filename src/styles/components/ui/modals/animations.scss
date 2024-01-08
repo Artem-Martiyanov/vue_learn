@@ -1,0 +1,82 @@
+// Анимация для левого бокового модального окна
+.left-side-modal-enter-from,
+.left-side-modal-leave-to {
+  @include ease(all);
+
+  :deep(.side-modal__inner) {
+    transform: translateX(-100%);
+  }
+
+  :deep(.side-modal__overlay) {
+    opacity: 0;
+  }
+}
+
+//------------------------------------------------------------------------------
+// Анимация для правого бокового модального окна
+.right-side-modal-enter-from,
+.right-side-modal-leave-to {
+  @include ease(all);
+
+  :deep(.side-modal__inner) {
+    transform: translateX(100%);
+  }
+
+  :deep(.side-modal__overlay) {
+    opacity: 0;
+  }
+}
+
+//------------------------------------------------------------------------------
+// Анимация для простого модального окна
+.simple-modal-enter-active {
+  transition: all 0.5s ease;
+
+  :deep(.simple-modal__inner) {
+    opacity: 0;
+  }
+
+  :deep(.simple-modal__overlay) {
+    animation: simple-turn-on 0.5s ease-out;
+  }
+}
+
+.simple-modal-leave-active {
+  transition: all 0.3s ease;
+
+  :deep(.simple-modal__overlay) {
+    animation: simple-turn-on 0.3s linear;
+    animation-direction: reverse;
+    opacity: 0;
+  }
+}
+
+.simple-modal-leave-from {
+  :deep(.simple-modal__inner) {
+    opacity: 1;
+  }
+}
+
+.simple-modal-leave-to {
+  :deep(.simple-modal__inner) {
+    opacity: 0;
+  }
+}
+
+@keyframes simple-turn-on {
+  0% {
+    transform: scale(0, 0.005);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1, 0.005);
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+//------------------------------------------------------------------------------
+

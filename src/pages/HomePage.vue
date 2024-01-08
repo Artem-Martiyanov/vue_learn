@@ -1,10 +1,10 @@
 <script setup lang="ts">
+import {ref, watch} from "vue";
 import Container from "@/layouts/Container.vue";
 import Button from "@/components/ui/Button.vue";
 import useGlobalModal from "@/hooks/useGlobalModal";
 import useModal from "@/hooks/useModal";
 import ModalSet from "@/components/ui/modals/ModalSet.vue";
-import {ref, watch} from "vue";
 
 const rightMenu = useGlobalModal('rightMenu')
 

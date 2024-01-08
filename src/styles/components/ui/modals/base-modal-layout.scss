@@ -1,3 +1,5 @@
+@import "animations.scss";
+
 .modal {
   position: fixed;
   inset: 0;
@@ -6,49 +8,5 @@
 
   :deep(*) {
     pointer-events: all;
-  }
-}
-
-
-// Анимация для левого бокового модального окна
-.left-side-modal-enter-from,
-.left-side-modal-leave-to {
-  @include ease(all);
-
-  :deep(.side-modal__inner) {
-    transform: translateX(-100%);
-  }
-
-  :deep(.side-modal__overlay) {
-    opacity: 0;
-  }
-}
-
-// Анимация для правого бокового модального окна
-.right-side-modal-enter-from,
-.right-side-modal-leave-to {
-  @include ease(all);
-
-  :deep(.side-modal__inner) {
-    transform: translateX(100%);
-  }
-
-  :deep(.side-modal__overlay) {
-    opacity: 0;
-  }
-}
-
-// Анимация для простого модального окна
-.simple-modal-enter-from,
-.simple-modal-leave-to {
-  transition: all 0.5s ease;
-
-  :deep(.simple-modal__inner) {
-    opacity: 0;
-  }
-
-  :deep(.simple-modal__overlay) {
-    transform: scaleY(0);
-    opacity: 0;
   }
 }

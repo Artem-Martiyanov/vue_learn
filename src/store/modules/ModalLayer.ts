@@ -1,11 +1,8 @@
 import {Module, StoreOptions} from "vuex";
 
-
-export type modalNames = 'leftMenu' | 'rightMenu'
-
 export interface ModalLayerState {
     layer: number,
-    globalModalsState?: {
+    globalModalsState: {
         [key: string]: boolean
     }
 }
@@ -13,20 +10,14 @@ export interface ModalLayerState {
 export default <StoreOptions<ModalLayerState>>{
     state: (): ModalLayerState => ({
         layer: 0,
-        globalModalsState: {
-            rightMenu: false
-        },
+        globalModalsState: {},
     }),
     mutations: {
         openModal: (state, payload) => {
-            if (state.globalModalsState) {
-                state.globalModalsState[payload] = true
-            }
+            state.globalModalsState[payload] = true
         },
         closeModal: (state, payload) => {
-            if (state.globalModalsState) {
-                state.globalModalsState[payload] = false
-            }
+            state.globalModalsState[payload] = false
         }
     },
     actions: {

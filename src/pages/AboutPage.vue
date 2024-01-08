@@ -1,11 +1,9 @@
 <script setup lang="ts">
 import Container from "@/layouts/Container.vue";
+import Button from "@/components/ui/Button.vue";
+import useGlobalModal from "@/hooks/useGlobalModal";
 
-interface Props {
-
-}
-
-const props = defineProps<Props>()
+const rightMenu = useGlobalModal('rightMenu')
 
 </script>
 
@@ -14,6 +12,7 @@ const props = defineProps<Props>()
     <div class="about">
       <h1>This is an about page</h1>
     </div>
+    <Button @click="rightMenu.open" primary>Открыть правое меню</Button>
   </Container>
 </template>
 

@@ -10,7 +10,6 @@ interface IUseGlobalModal {
 
 export default (modalName: string): IUseGlobalModal => {
     return {
-
         open: async (cb) => {
             await store.dispatch('openModal', modalName)
             typeof cb === 'function' && cb()
@@ -20,4 +19,5 @@ export default (modalName: string): IUseGlobalModal => {
             typeof cb === 'function' && cb()
         }
     }
+
 }

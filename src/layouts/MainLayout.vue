@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import Header from "@/components/blocks/Header.vue";
 import Footer from "@/components/blocks/Footer.vue";
+import GlobalModals from "@/layouts/GlobalModals.vue";
 </script>
 
 <template>
@@ -10,6 +11,7 @@ import Footer from "@/components/blocks/Footer.vue";
   </main>
   <Footer/>
   <div id="modals"/>
+  <GlobalModals/>
 </template>
 
 <style lang="scss" scoped>

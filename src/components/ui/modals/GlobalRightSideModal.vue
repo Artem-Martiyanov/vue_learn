@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import SideModalTemplate from "@/components/ui/modals/templates/SideModalTemplate.vue";
-import useGlobalModalConfigure from "@/hooks/useGlobalModalConfigure";
 import Button from "@/components/ui/Button.vue";
+import useRegisterGlobalModal from "@/hooks/useRegisterGlobalModal";
+import useGlobalModal from "@/hooks/useGlobalModal";
 
 interface Props {
  connectId?: string
@@ -9,9 +10,8 @@ interface Props {
 
 defineProps<Props>()
 
-const isOpen = useGlobalModalConfigure('rightMenu')
-
-const closeThisModal = () => isOpen.value = false
+const isOpen = useRegisterGlobalModal('rightMenu')
+const thisModal = useGlobalModal('rightMenu')
 
 </script>
 
@@ -33,7 +33,7 @@ const closeThisModal = () => isOpen.value = false
     </template>
 
     <template #footer>
-      <Button @click="closeThisModal" disabled secondary>Закрыть меня</Button>
+      <Button @click="thisModal.close" secondary>Закрыть меня</Button>
     </template>
   </SideModalTemplate>
 </template>
