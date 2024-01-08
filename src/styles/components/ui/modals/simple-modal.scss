@@ -15,7 +15,6 @@
   }
 
   &__inner {
-    @include ease(opacity);
     transition: opacity 0.3s ease 0.2s;
     position: relative;
     background: var(--main-white);

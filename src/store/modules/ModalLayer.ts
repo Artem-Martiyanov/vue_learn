@@ -2,6 +2,8 @@ import {Module, StoreOptions} from "vuex";
 
 export interface ModalLayerState {
     layer: number,
+    nowOpenedId: string,
+    zIndex: number,
     globalModalsState: {
         [key: string]: boolean
     }
@@ -11,6 +13,8 @@ export default <StoreOptions<ModalLayerState>>{
     state: (): ModalLayerState => ({
         layer: 0,
         globalModalsState: {},
+        nowOpenedId: '',
+        zIndex: 10
     }),
     mutations: {
         openModal: (state, payload) => {

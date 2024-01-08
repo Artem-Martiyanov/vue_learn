@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {defineModel, nextTick, watch} from "vue";
+import {defineModel, nextTick, ref, watch} from "vue";
 import {useStore} from "@/store/store";
 import {scroll} from "@/utils/utils";
 
@@ -13,26 +13,40 @@ const props = defineProps<Props>()
 
 const store = useStore()
 const isOpen = defineModel('isOpen')
+const currentZIndex = ref(store.state?.modalLayer?.zIndex)
 
-// Открыто ли модальное окно только что
 let isOpenedNow = false
 
 watch(isOpen, () => {
   store.dispatch(isOpen.value ? 'modalLayerUp' : 'modalLayerDown')
   store.state.modalLayer.layer ? scroll.lock() : scroll.unlock()
 
+  // Отвечает за режим связанных модальных окон
   if (props.connectId) {
     isOpenedNow = true
+    store.state.modalLayer.nowOpenedId = props.connectId
   }
 })
 
-// Отвечает за режим связанных модальных окон
 watch(() => store.state.modalLayer.layer, () => {
+// Отвечает за режим связанных модальных окон
   if (props.connectId) {
-    if (!isOpenedNow) {
+    if (!isOpenedNow && store.state.modalLayer.nowOpenedId === props.connectId) {
       isOpen.value = false
     }
-    nextTick(() => isOpenedNow = false)
+    nextTick(() => {
+      isOpenedNow = false
+      store.state.modalLayer.nowOpenedId = ''
+    })
+  }
+
+  // Отвечает за расчёт z-index, чтобы новая открытая модалка была всегда поверх
+  if (isOpenedNow) {
+    currentZIndex.value = store.state.modalLayer.zIndex++
+  }
+
+  if (store.state.modalLayer.layer === 0) {
+    currentZIndex.value = store.state.modalLayer.zIndex = 10
   }
 })
 
@@ -43,6 +57,7 @@ watch(() => store.state.modalLayer.layer, () => {
     <article
         class="modal"
         v-show="isOpen"
+        :style="`z-index: ${currentZIndex}`"
     >
       <slot/>
     </article>
